@@ -1,0 +1,65 @@
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username TEXT UNIQUE NOT NULL,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
+  password TEXT NOT NULL,
+  gmail_address TEXT NOT NULL,
+  bio TEXT NOT NULL,
+  is_admin BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE messages (
+  id SERIAL PRIMARY KEY,
+  text TEXT NOT NULL,
+  time TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE message_chat (
+  id SERIAL PRIMARY KEY,
+  sender INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  receiver INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  message_id INTEGER REFERENCES messages(id) ON DELETE CASCADE,
+  seen BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE chat_history(
+  id SERIAL PRIMARY KEY,
+  user_one INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  user_two INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  time TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE favourite_list(
+  id SERIAL PRIMARY KEY,
+  sender INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  receiver INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  chat_history_id INTEGER REFERENCES chat_history(id) ON DELETE CASCADE
+);
+
+CREATE TABLE emails (
+  id SERIAL PRIMARY KEY,
+  subject_line TEXT NOT NULL,
+  text TEXT NOT NULL,
+  time TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE mail_users (
+  id SERIAL PRIMARY KEY,
+  gmail_address TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE mail_chat (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  mail_user_id INTEGER REFERENCES mail_users(id) ON DELETE CASCADE,
+  email_id INTEGER REFERENCES emails(id) ON DELETE CASCADE,
+  sent_by_app_user BOOLEAN NOT NULL
+);
+
+CREATE TABLE mail_history(
+  id SERIAL PRIMARY KEY,
+  app_user INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  mail_user INTEGER REFERENCES mail_users(id) ON DELETE CASCADE,
+  time TIMESTAMP NOT NULL DEFAULT NOW()
+);

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "gmailAddress": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 70,
+      "format": "email"
+    }
+  },
+  "required": ["gmailAddress"]
+}

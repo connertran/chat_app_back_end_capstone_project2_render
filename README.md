@@ -93,3 +93,8 @@ You can choose either test individual test file or all files at once. It will ta
 
 - Add a suggestion list when users search for people to chat with.
 - Implement email and calling features (requires a paid Google API plan).
+
+## Deployed Link
+
+[Front-end link](https://chat-app-front-end-4qvj.onrender.com)  
+[Back-end link](https://chat-app-back-end-capstone-project2.onrender.com)

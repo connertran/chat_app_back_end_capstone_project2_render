@@ -12,6 +12,15 @@ const server = http.createServer(app);
 const socketIO = require("socket.io");
 const { FRONTEND_URL } = require("./config");
 
+// Enable CORS middleware before Socket.IO initialization
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", FRONTEND_URL);
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 const io = socketIO(server, {
   cors: {
     origin: "https://chat-app-front-end-pi-green.vercel.app",

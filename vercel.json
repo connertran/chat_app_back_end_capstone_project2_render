@@ -8,7 +8,7 @@
   ],
   "headers": [
     {
-      "source": "/socket.io/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
@@ -17,14 +17,6 @@
         {
           "key": "Access-Control-Allow-Methods",
           "value": "GET,POST,OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Credentials",
-          "value": "true"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type,Authorization"
         }
       ]
     }
@@ -32,6 +24,10 @@
   "rewrites": [
     {
       "source": "/socket.io/(.*)",
+      "destination": "/server.js"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/server.js"
     }
   ]

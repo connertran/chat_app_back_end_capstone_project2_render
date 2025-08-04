@@ -94,6 +94,11 @@ However, due to the complexity of the Google API, I decided to exclude the Googl
 8. In the terminal, navigate to the `client/vite-project/` directory. Run `npm run dev` to start the client server.
 9. To work with the app API in the backend, use an application like Insomnia. The API is available at: `http://localhost:8000`.
 10. To see how the whole application works (front-end and back-end), open a web browser and go to `http://localhost:5173/`.
+11. If you want to deploy this app you will have to create the ENV variables
+
+- SECRET_KEY
+- PORT
+- DATABASE_URL
 
 ## Testing
 

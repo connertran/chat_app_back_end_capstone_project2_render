@@ -75,10 +75,12 @@ However, due to the complexity of the Google API, I decided to exclude the Googl
 1. Download [npm and Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to your machine.
 2. Open a terminal and navigate to the `backend/` directory. Run `npm install` to install all the required packages for the backend.
 3. In the terminal, navigate to the `client/vite-project/` directory. Run `npm install` to install all the required packages for the frontend.
-4. In the terminal, navigate to the `backend/` directory. Run `npm start` to start the API server.
-5. In the terminal, navigate to the `client/vite-project/` directory. Run `npm run dev` to start the client server.
-6. To work with the app API in the backend, use an application like Insomnia. The API is available at: `http://localhost:8000`.
-7. To see how the whole application works (front-end and back-end), open a web browser and go to `http://localhost:5173/`.
+4. Create 2 databases in your postgreSQL, name them as `chat_app_test` and `chat_app`.
+5. Go to chat_app backend `config.js` and the change the database password to your postgreSQL database password.
+6. In the terminal, navigate to the `backend/` directory. Run `npm start` to start the API server.
+7. In the terminal, navigate to the `client/vite-project/` directory. Run `npm run dev` to start the client server.
+8. To work with the app API in the backend, use an application like Insomnia. The API is available at: `http://localhost:8000`.
+9. To see how the whole application works (front-end and back-end), open a web browser and go to `http://localhost:5173/`.
 
 ## Testing
 

@@ -5,6 +5,7 @@
 const express = require("express");
 // using cors to communicate with the front-end
 const cors = require("cors");
+const { FRONTEND_URL } = require("./config");
 const { NotFoundError } = require("./expressError");
 
 const userRoutes = require("./routes/users");
@@ -20,7 +21,14 @@ const morgan = require("morgan");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [FRONTEND_URL],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(authenticateJWT);

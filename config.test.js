@@ -18,9 +18,13 @@ describe("config can come from env", function () {
     delete process.env.BCRYPT_WORK_FACTOR;
     delete process.env.DATABASE_URL;
 
-    expect(config.getDatabaseUri()).toEqual("postgresql:///chat_app");
+    expect(config.getDatabaseUri()).toEqual(
+      "postgresql://postgres:1234@localhost:5432/chat_app"
+    );
     process.env.NODE_ENV = "test";
 
-    expect(config.getDatabaseUri()).toEqual("postgresql:///chat_app_test");
+    expect(config.getDatabaseUri()).toEqual(
+      "postgresql://postgres:1234@localhost:5432/chat_app_test"
+    );
   });
 });

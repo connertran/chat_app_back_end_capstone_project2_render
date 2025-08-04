@@ -20,8 +20,10 @@ const io = socketIO(server, {
     allowedHeaders: ["Content-Type", "Authorization"],
   },
   allowEIO3: true,
-  transports: ["websocket", "polling"],
+  transports: ["polling", "websocket"],
   path: "/socket.io/",
+  pingTimeout: 60000,
+  pingInterval: 25000,
 });
 
 io.on("connection", async (socket) => {

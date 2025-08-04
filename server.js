@@ -1,28 +1,28 @@
 "use strict";
 
-const app = require("./app");
-const { PORT } = require("./config");
+const express = require("express");
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+const { PORT, FRONTEND_URL } = require("./config");
 const Message = require("./models/message");
 const User = require("./models/user");
 
-const http = require("http");
-const server = http.createServer(app);
+const app = require("./app");
+const httpServer = createServer(app);
 
-// Ensure Socket.IO server is being used
-const socketIO = require("socket.io");
-const { FRONTEND_URL } = require("./config");
-
-const io = socketIO(server, {
+// Socket.IO setup with Express
+const io = new Server(httpServer, {
   cors: {
-    origin: "https://chat-app-front-end-pi-green.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: false,
+    origin: FRONTEND_URL,
+    methods: ["GET", "POST", "OPTIONS"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   },
-  transports: ["websocket", "polling"],
-  path: "/socket.io",
-  pingTimeout: 60000,
-  pingInterval: 25000,
+  path: "/socket.io/",
+  transports: ["polling", "websocket"],
   allowEIO3: true,
+  pingInterval: 25000,
+  pingTimeout: 60000,
 });
 
 io.on("connection", async (socket) => {
@@ -102,6 +102,6 @@ const { read } = require("fs");
 messagesRoutes.setIo(io);
 // messagesRoutesTest.setIo(io);
 
-server.listen(PORT, function () {
-  console.log(`Started on http://localhost:${PORT}`);
+httpServer.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });

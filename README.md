@@ -76,11 +76,24 @@ However, due to the complexity of the Google API, I decided to exclude the Googl
 2. Open a terminal and navigate to the `backend/` directory. Run `npm install` to install all the required packages for the backend.
 3. In the terminal, navigate to the `client/vite-project/` directory. Run `npm install` to install all the required packages for the frontend.
 4. Create 2 databases in your postgreSQL, name them as `chat_app_test` and `chat_app`.
-5. Go to chat_app backend `config.js` and the change the database password to your postgreSQL database password.
-6. In the terminal, navigate to the `backend/` directory. Run `npm start` to start the API server.
-7. In the terminal, navigate to the `client/vite-project/` directory. Run `npm run dev` to start the client server.
-8. To work with the app API in the backend, use an application like Insomnia. The API is available at: `http://localhost:8000`.
-9. To see how the whole application works (front-end and back-end), open a web browser and go to `http://localhost:5173/`.
+5. Create the database tables by running the following commands in your terminal:
+
+   ```bash
+   # For the main database
+   psql -d chat_app -f db_data/chat_schema.sql
+   psql -d chat_app -f db_data/chat_seed.sql
+
+   # For the test database
+   psql -d chat_app_test -f db_data/chat_schema.sql
+   ```
+
+   This will create all necessary tables including: users, messages, message_chat, chat_history, favourite_list, emails, mail_users, mail_chat, and mail_history.
+
+6. Go to chat_app backend `config.js` and the change the database password to your postgreSQL database password.
+7. In the terminal, navigate to the `backend/` directory. Run `npm start` to start the API server.
+8. In the terminal, navigate to the `client/vite-project/` directory. Run `npm run dev` to start the client server.
+9. To work with the app API in the backend, use an application like Insomnia. The API is available at: `http://localhost:8000`.
+10. To see how the whole application works (front-end and back-end), open a web browser and go to `http://localhost:5173/`.
 
 ## Testing
 

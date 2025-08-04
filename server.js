@@ -14,12 +14,10 @@ const { FRONTEND_URL } = require("./config");
 
 const io = socketIO(server, {
   cors: {
-    origin: FRONTEND_URL,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    origin: "https://chat-app-front-end-pi-green.vercel.app",
+    methods: ["GET", "POST"],
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   },
-  allowEIO3: true,
   transports: ["polling", "websocket"],
   path: "/socket.io",
   pingTimeout: 60000,

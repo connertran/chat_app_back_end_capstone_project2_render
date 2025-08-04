@@ -23,9 +23,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: [FRONTEND_URL],
+    origin: "https://chat-app-front-end-pi-green.vercel.app",
     credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );

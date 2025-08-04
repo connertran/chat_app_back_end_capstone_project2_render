@@ -12,7 +12,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "*"
+          "value": "https://chat-app-front-end-pi-green.vercel.app"
         },
         {
           "key": "Access-Control-Allow-Credentials",

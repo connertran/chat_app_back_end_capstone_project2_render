@@ -14,23 +14,16 @@ const { FRONTEND_URL } = require("./config");
 
 const io = socketIO(server, {
   cors: {
-    origin: "*", // Temporarily allow all origins for testing
+    origin: FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
   },
   allowEIO3: true,
   transports: ["polling", "websocket"],
-  path: "/socket.io", // Remove trailing slash
+  path: "/socket.io",
   pingTimeout: 60000,
   pingInterval: 25000,
-  cookie: {
-    name: "io",
-    httpOnly: true,
-    sameSite: "lax",
-  },
 });
 
 io.on("connection", async (socket) => {

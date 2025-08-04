@@ -14,7 +14,10 @@
           "key": "Access-Control-Allow-Origin",
           "value": "${FRONTEND_URL}"
         },
-        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        {
+          "key": "Access-Control-Allow-Credentials",
+          "value": "true"
+        },
         {
           "key": "Access-Control-Allow-Methods",
           "value": "GET,POST,PUT,PATCH,DELETE,OPTIONS"
@@ -26,10 +29,10 @@
       ]
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/server.js"
+      "source": "/(.*)",
+      "destination": "/server.js"
     }
   ]
 }

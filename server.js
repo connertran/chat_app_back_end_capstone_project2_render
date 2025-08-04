@@ -15,9 +15,13 @@ const { FRONTEND_URL } = require("./config");
 const io = socketIO(server, {
   cors: {
     origin: FRONTEND_URL,
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   },
+  allowEIO3: true,
+  transports: ["websocket", "polling"],
+  path: "/socket.io/",
 });
 
 io.on("connection", async (socket) => {

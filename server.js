@@ -16,12 +16,13 @@ const io = socketIO(server, {
   cors: {
     origin: "https://chat-app-front-end-pi-green.vercel.app",
     methods: ["GET", "POST"],
-    credentials: true,
+    credentials: false,
   },
-  transports: ["polling", "websocket"],
+  transports: ["websocket", "polling"],
   path: "/socket.io",
   pingTimeout: 60000,
   pingInterval: 25000,
+  allowEIO3: true,
 });
 
 io.on("connection", async (socket) => {

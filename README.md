@@ -116,7 +116,6 @@ You can choose either test individual test file or all files at once. It will ta
 
 ## Deployed Link
 
-I'm sorry, but the deployed link may stop working. I recommend cloning the projects to your local computer using Git.
-
-[Front-end link](https://chat-app-front-end-4qvj.onrender.com)  
-[Back-end link](https://chat-app-back-end-capstone-project2.onrender.com)
+[Front-end link](https://github.com/connertran/chat_app_front_end_capstone_project2_render)  
+[Back-end link](https://github.com/connertran/chat_app_back_end_capstone_project2_render)
+[Deployed Link](https://chat-app-front-end-pi-green.vercel.app/)

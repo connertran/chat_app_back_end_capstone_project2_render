@@ -10,9 +10,13 @@ const server = http.createServer(app);
 
 // Ensure Socket.IO server is being used
 const socketIO = require("socket.io");
+const { FRONTEND_URL } = require("./config");
+
 const io = socketIO(server, {
   cors: {
-    origin: "*",
+    origin: FRONTEND_URL,
+    methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 

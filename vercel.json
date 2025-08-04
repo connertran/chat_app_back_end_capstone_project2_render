@@ -6,12 +6,9 @@
       "use": "@vercel/node"
     }
   ],
-  "env": {
-    "NODE_ENV": "production"
-  },
   "headers": [
     {
-      "source": "/socket.io/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
@@ -20,25 +17,17 @@
         {
           "key": "Access-Control-Allow-Methods",
           "value": "GET,POST,OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization"
-        },
-        {
-          "key": "Access-Control-Allow-Credentials",
-          "value": "true"
         }
       ]
     }
   ],
   "rewrites": [
     {
-      "source": "/socket.io",
+      "source": "/socket.io/(.*)",
       "destination": "/server.js"
     },
     {
-      "source": "/socket.io/(.*)",
+      "source": "/(.*)",
       "destination": "/server.js"
     }
   ]

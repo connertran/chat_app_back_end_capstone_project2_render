@@ -12,7 +12,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "${FRONTEND_URL}"
+          "value": "*"
         },
         {
           "key": "Access-Control-Allow-Credentials",
@@ -31,7 +31,11 @@
   ],
   "rewrites": [
     {
-      "source": "/socket.io/:path*",
+      "source": "/socket.io",
+      "destination": "/server.js"
+    },
+    {
+      "source": "/socket.io/(.*)",
       "destination": "/server.js"
     },
     {

@@ -22,11 +22,12 @@ function getDatabaseUri() {
 // WJB: Evaluate in 2021 if this should be increased to 13 for non-test use
 const BCRYPT_WORK_FACTOR = process.env.NODE_ENV === "test" ? 1 : 12;
 
-// the first URL is the production URL of the app Vercel deployed front-end, the second URL is the development URL
-const FRONTEND_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://chat-app-front-end-pi-green.vercel.app"
-    : "http://localhost:5173";
+// Array of allowed origins for CORS
+const FRONTEND_URLS = [
+  "https://chat-app-front-end-pi-green.vercel.app", // Production URL
+  "http://localhost:5173", // Development URL
+  "https://chat-app-front-end-pi-green.vercel.app/", // With trailing slash
+];
 
 console.log("Chat app Config:".green);
 console.log("SECRET_KEY:".brightYellow, SECRET_KEY);
@@ -40,5 +41,5 @@ module.exports = {
   PORT,
   BCRYPT_WORK_FACTOR,
   getDatabaseUri,
-  FRONTEND_URL,
+  FRONTEND_URLS,
 };

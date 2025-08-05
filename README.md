@@ -94,11 +94,6 @@ However, due to the complexity of the Google API, I decided to exclude the Googl
 8. In the terminal, navigate to the `client/vite-project/` directory. Run `npm run dev` to start the client server.
 9. To work with the app API in the backend, use an application like Insomnia. The API is available at: `http://localhost:8000`.
 10. To see how the whole application works (front-end and back-end), open a web browser and go to `http://localhost:5173/`.
-11. If you want to deploy this app you will have to create the ENV variables
-
-- SECRET_KEY
-- PORT
-- DATABASE_URL
 
 ## Testing
 
@@ -116,6 +111,7 @@ You can choose either test individual test file or all files at once. It will ta
 
 ## Deployed Link
 
-[Front-end link](https://github.com/connertran/chat_app_front_end_capstone_project2_render)  
-[Back-end link](https://github.com/connertran/chat_app_back_end_capstone_project2_render)
-[Deployed Link](https://chat-app-front-end-pi-green.vercel.app/)
+I'm sorry, but the deployed link may stop working. I recommend cloning the projects to your local computer using Git.
+
+[Front-end link](https://chat-app-front-end-4qvj.onrender.com)  
+[Back-end link](https://chat-app-back-end-capstone-project2.onrender.com)

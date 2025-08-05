@@ -13,21 +13,13 @@ const PORT = +process.env.PORT || 8000;
 function getDatabaseUri() {
   return process.env.NODE_ENV === "test"
     ? "postgresql://postgres:1234@localhost:5432/chat_app_test"
-    : process.env.DATABASE_URL ||
-        "postgresql://postgres:1234@localhost:5432/chat_app";
+    : process.env.DATABASE_URL || "postgresql://postgres:1234@localhost:5432/chat_app";
 }
 
 // Speed up bcrypt during tests, since the algorithm safety isn't being tested
 //
 // WJB: Evaluate in 2021 if this should be increased to 13 for non-test use
 const BCRYPT_WORK_FACTOR = process.env.NODE_ENV === "test" ? 1 : 12;
-
-// Array of allowed origins for CORS
-const FRONTEND_URLS = [
-  "https://chat-app-front-end-pi-green.vercel.app", // Production URL
-  "http://localhost:5173", // Development URL
-  "https://chat-app-front-end-pi-green.vercel.app/", // With trailing slash
-];
 
 console.log("Chat app Config:".green);
 console.log("SECRET_KEY:".brightYellow, SECRET_KEY);
@@ -41,5 +33,4 @@ module.exports = {
   PORT,
   BCRYPT_WORK_FACTOR,
   getDatabaseUri,
-  FRONTEND_URLS,
 };

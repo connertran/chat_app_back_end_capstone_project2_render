@@ -10,19 +10,10 @@ const server = http.createServer(app);
 
 // Ensure Socket.IO server is being used
 const socketIO = require("socket.io");
-const { FRONTEND_URL } = require("./config");
-
 const io = socketIO(server, {
   cors: {
-    origin: "https://chat-app-front-end-pi-green.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: false,
+    origin: "*",
   },
-  transports: ["websocket", "polling"],
-  path: "/socket.io",
-  pingTimeout: 60000,
-  pingInterval: 25000,
-  allowEIO3: true,
 });
 
 io.on("connection", async (socket) => {
